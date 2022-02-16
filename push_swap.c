@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 21:56:10 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/15 23:40:06 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/16 00:39:05 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,27 @@ void	check_same_number(int *numbers)
 	}
 }
 
-void	ft_sort_3(t_stack *stack)
+void	ft_sort_3(t_stack **stack)
 {
 	int	first;
 	int second;
 	int	last;
 
-	first = stack->value;
-	second = stack->next->value;
-	last = stack->next->next->value;
+	first = (*stack)->value;
+	second = (*stack)->next->value;
+	last = (*stack)->next->next->value;
 	if (first > second && second < last && last > first)
 	{
-		ft_swap(stack);
+		ft_swap(*stack);
 		ft_putstr_fd("sa\n", 1);
 	}
 	if (first > second && second > last)
 	{
-		// ft_swap(stack);
-		ft_reverse_rotate(stack);
+		ft_swap(*stack);
+		ft_putstr_fd("sa\n", 1);
+		*stack = ft_reverse_rotate(*stack);
+		ft_putstr_fd("ra\n", 1);
 	}
-	// if (first > second && second < last)
-	// {
-	// 	ft_rotate(stack);
-	// 	ft_putstr_fd("ra\n", 1);
-	// }
 }
 
 int	main(int ac, char **av)
@@ -97,17 +94,16 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		if(check_digit(ac, av) == 0)
-			ft_putstr_fd("is not digit", 1);
+			ft_putstr_fd("error", 1);
 		else
 		{
 			stack = ft_fill_stack(av);
-			ft_rotate(stack);
-			// ft_sort_3(stack);
-			// while (stack)
-			// {
-			// 	printf("%d\n",stack->value);
-			// 	stack = stack->next;
-			// }
+			ft_sort_3(&stack);
+			while (stack)
+			{
+				printf("%d\n",stack->value);
+				stack = stack->next;
+			}
 		}
 	}
 }

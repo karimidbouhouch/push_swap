@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:12:49 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/15 23:41:40 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/16 00:52:12 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,5 @@ t_stack	*ft_rotate(t_stack *stack)
 	head = stack->next;
 	stack->next = NULL;
 	ft_stackadd_back(&head, stack);
-	// while (head)
-	// {
-	// 	printf("%d\n",head->value);
-	// 	head = head->next;
-	// }
 	return (head);
 }
