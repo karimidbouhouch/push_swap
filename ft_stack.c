@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:11:52 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/15 23:35:09 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/20 22:08:09 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ t_stack	*ft_stacknew(int value)
 	if (!p)
 		return (NULL);
 	p->value = value;
+	p->index_sort = 0;
+	p->pushtob = 0;
+	p->count = 0;
 	p->next = NULL;
 	return (p);
 }

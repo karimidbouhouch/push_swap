@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 21:57:16 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/15 23:16:34 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/20 22:07:42 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@
 typedef struct s_stack
 {
 	int	value;
+	int index_sort;
+	int	pushtob;
+	int count;
 	struct s_stack *next;
 } t_stack;
-
 
 t_stack	*ft_rotate(t_stack *stack);
 t_stack	*ft_reverse_rotate(t_stack *stack);
 void	ft_swap(t_stack *stack);
+void	ft_push(t_stack **a, t_stack **b);
 
 
 t_stack	*ft_stack_before_last(t_stack *stack);
@@ -36,6 +39,13 @@ t_stack	*ft_stacknew(int value);
 void	ft_stackadd_back(t_stack **lst, t_stack *new);
 void	ft_stackadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_stacklast(t_stack *lst);
+int	ft_is_sorted(t_stack *stack);
+
+
+void	ft_sort_2(t_stack **stack);
+void	ft_sort_3(t_stack **stack);
+void	ft_sort_4(t_stack **stack);
+void	ft_sort_5(t_stack **stack);
 
 
 #endif
