@@ -1,6 +1,6 @@
 NAME = push_swap
 INC = push_swap.h
-SRC = ft_move.c ft_stack.c push_swap.c sort_less_5.c
+SRC = ft_move.c ft_stack.c push_swap.c sort_less_5.c ft_longest_list.c ft_sort_tab.c ft_bestmove.c
 CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 $(NAME): $(SRC:.c=.o)

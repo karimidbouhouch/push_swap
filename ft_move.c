@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:12:49 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/17 21:49:42 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/22 01:11:27 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_push(t_stack **a, t_stack **b)
 	t_stack *tmp;
 
 	tmp = *a;
-	new = ft_stacknew((*a)->value);
+	new = ft_stacknew((*a)->value,(*a)->index_sort);
 	ft_stackadd_front(b, new);
 	(*a) = (*a)->next;
 }

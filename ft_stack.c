@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:11:52 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/20 22:08:09 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/22 01:11:47 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_stackadd_back(t_stack **lst, t_stack *new)
 	}
 }
 
-t_stack	*ft_stacknew(int value)
+t_stack	*ft_stacknew(int value, int index)
 {
 	t_stack	*p;
 
@@ -53,7 +53,7 @@ t_stack	*ft_stacknew(int value)
 	if (!p)
 		return (NULL);
 	p->value = value;
-	p->index_sort = 0;
+	p->index_sort = index;
 	p->pushtob = 0;
 	p->count = 0;
 	p->next = NULL;
@@ -70,7 +70,7 @@ t_stack *ft_fill_stack(char **numbers)
 	head = NULL;
 	while (numbers[i])
 	{
-		s = ft_stacknew(ft_atoi(numbers[i]));
+		s = ft_stacknew(ft_atoi(numbers[i]), 0);
 		ft_stackadd_back(&head, s);
 		i++;
 	}
