@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:12:49 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/22 01:11:27 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/28 00:34:50 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_stack	*ft_reverse_rotate(t_stack *stack)
 {
 	t_stack *last;
 
+	if (ft_stacksize(stack) <= 1)
+		return (stack);
 	last = ft_stacklast(stack);
 	ft_stack_before_last(stack)->next = NULL;
 	ft_stackadd_front(&stack, last);
@@ -35,6 +37,8 @@ t_stack	*ft_rotate(t_stack *stack)
 {
 	t_stack *head;
 
+	if (ft_stacksize(stack) <= 1)
+		return (stack);
 	head = stack->next;
 	stack->next = NULL;
 	ft_stackadd_back(&head, stack);

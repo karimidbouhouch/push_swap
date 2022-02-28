@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 21:57:16 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/25 21:59:00 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/28 04:37:19 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_global
 {
 	int a;
 	int b;
+	int tmp_a;
+	int	tmp_b;
 	struct s_stack **stack_a;
 	struct s_stack **stack_b;
 } t_global;
@@ -67,7 +69,13 @@ void	ft_sort_5(t_stack **stack);
 
 
 
-int	ft_bestmovesindex(t_global push, int current_b);
+int	ft_getbestmoveindex(t_global push);
+int	ft_movementsfuture(t_stack *a, int current_b);
+
+int	ft_optimize(int moves, int count);
+int	ft_ismidel(int *moves, int size);
+void	ft_move_to_a(t_stack **a, t_stack **b, int index);
+
 
 
 #endif

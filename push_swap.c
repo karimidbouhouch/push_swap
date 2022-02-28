@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 21:56:10 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/25 22:02:21 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/28 04:37:11 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,19 +95,96 @@ void	ft_push_longest_to_b(t_stack **a, t_stack **b)
 void	ft_sort(t_stack **a, t_stack **b)
 {
 	t_global push;
-	int	i;
+	t_stack *stack_a;
+	t_stack *stack_b;
+	t_stack *tmp;
+	int count;
 	
-	i = 0;
 	push.stack_a = a;
 	push.stack_b = b;
 	ft_push_longest_to_b(a, b);
-	// while (ft_stacksize(*b))
+	
+	stack_a = *a;
+	stack_b = *b;
+	// printf("--- Stack A ---\n");
+	// while (stack_a)
 	// {
-		push.a = ft_bestmovesindex(push, i);
-		printf("[index best move = %d]\n",push.a);
+	// 	printf("%d => %d\n",stack_a->value,stack_a->index_sort);
+	// 	stack_a = stack_a->next;
+	// }
+	// printf("--- Stack B ---\n");
+	// while (stack_b)
+	// {
+	// 	printf("%d => %d\n",stack_b->value,stack_b->index_sort);
+	// 	stack_b = stack_b->next;
+	// }
+	
+	while (ft_stacksize(*b))
+	{
+		push.a = ft_getbestmoveindex(push);
+		// printf("[index b ==> %d]\n",push.a);
+		
+		// stack_a = *a;
+		// stack_b = *b;
+		// printf("\n\n--- Stack A ---\n");
+		// while (stack_a)
+		// {
+		// 	printf("%d => %d\n",stack_a->value,stack_a->index_sort);
+		// 	stack_a = stack_a->next;
+		// }
+		// printf("--- Stack B ---\n");
+		// while (stack_b)
+		// {
+		// 	printf("%d => %d\n",stack_b->value,stack_b->index_sort);
+		// 	stack_b = stack_b->next;
+		// }
+		ft_move_to_a(a, b, push.a);
+		// ft_move_to_a(push, push.a);
+	}
+	count = 0;
+	tmp = *a;
+	while (*a)
+	{
+		if ((*a)->index_sort == 0)
+			break ;
+		count++;
+		*a = (*a)->next;
+	}
+	a = push.stack_a;
+	if (count != ft_optimize(count, ft_stacksize(tmp)))
+	{
+		count = ft_optimize(count, ft_stacksize(tmp));
+		while (count)
+		{
+			tmp = ft_reverse_rotate(tmp);
+			ft_putstr_fd("rra\n", 1);
+			count--;
+		}
+	}
+	else 
+	{
+		while (count)
+		{
+			tmp = ft_rotate(tmp);
+			ft_putstr_fd("ra\n", 1);
+			count--;
+		}
+	}
+	stack_a = *a;
+	// stack_b = *b;
+	// printf("--- Stack A ---\n");
+	// while (stack_a)
+	// {
+	// 	printf("%d => %d\n",stack_a->value,stack_a->index_sort);
+	// 	stack_a = stack_a->next;
+	// }
+	// printf("--- Stack B ---\n");
+	// while (stack_b)
+	// {
+	// 	printf("%d => %d\n",stack_b->value,stack_b->index_sort);
+	// 	stack_b = stack_b->next;
 	// }
 }
-
 int	main(int ac, char **av)
 {
 	t_stack *stack_a;
@@ -136,18 +213,18 @@ int	main(int ac, char **av)
 				else
 					ft_sort(&stack_a, &stack_b);
 			}
-			printf("------\n");
-			while (stack_a)
-			{
-				printf("%d => %d\n",stack_a->value,stack_a->index_sort);
-				stack_a = stack_a->next;
-			}
-			printf("------\n");
-			while (stack_b)
-			{
-				printf("%d => %d\n",stack_b->value,stack_b->index_sort);
-				stack_b = stack_b->next;
-			}
+			// printf("------\n");
+			// while (stack_a)
+			// {
+			// 	printf("%d => %d\n",stack_a->value,stack_a->index_sort);
+			// 	stack_a = stack_a->next;
+			// }
+			// printf("------\n");
+			// while (stack_b)
+			// {
+			// 	printf("%d => %d\n",stack_b->value,stack_b->index_sort);
+			// 	stack_b = stack_b->next;
+			// }
 		}
 	}
 }

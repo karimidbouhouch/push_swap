@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 16:13:23 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/26 00:48:18 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/02/28 04:38:20 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ int	ft_countforstart(t_stack *start, int index)
 	{
 		counting++;
 		if (index > start->index_sort)
-		{
 			answer = counting;
-		}
 		else
 			break ;
 		start = start->next;
@@ -49,9 +47,7 @@ int	ft_countforhead(t_stack *head, int index, int end)
 	{
 		counting++;
 		if (index > head->index_sort)
-		{
 			answer = counting;
-		}
 		else
 			break ;
 		head = head->next;
@@ -133,22 +129,23 @@ int	ft_ismidel(int *moves, int size)
 	return (-1);
 }
 
-void	ft_first(int *total, int moves1, int moves2, t_stack *x)
+void	ft_first(int *total, int a, int b, t_stack *x)
 {
-	moves1 = ft_optimize(moves1, ft_stacksize(x));
-	moves2 = moves2 + 1;
-	if (moves1 > moves2)
-		*total = moves1;
+	a = ft_optimize(a, ft_stacksize(x));
+	b = b + 1;
+	if (a > b)
+		*total = a;
 	else
-		*total = moves2;
+		*total = b;
 }
 
-int	ft_second(int a, int b, t_stack *tmpa, t_stack *tmpb)
+int	ft_second(t_global p, int b)
 {
 	int	total;
-
-	a = ft_optimize(a, ft_stacksize(tmpa));
-	b = ft_optimize(b, ft_stacksize(tmpb));
+	int a;
+	
+	a = ft_optimize(p.a, ft_stacksize(*p.stack_a));
+	b = ft_optimize(b, ft_stacksize(*p.stack_b));
 	if (a > b)
 		total = a;
 	else
@@ -156,21 +153,21 @@ int	ft_second(int a, int b, t_stack *tmpa, t_stack *tmpb)
 	return (total);
 }
 
-int	ft_theelse(t_global corrent, int correntb, t_stack *tmpa, t_stack *tmpb)
+int	ft_theelse(t_global corrent, int b)
 {
 	int	total;
 
-	corrent.a = ft_optimize(ft_movementsfuture(tmpa, corrent.b),
-			ft_stacksize(tmpa));
-	correntb = ft_optimize(correntb, ft_stacksize(tmpb));
-	total = corrent.a + correntb;
+	corrent.a = ft_optimize(ft_movementsfuture(*corrent.stack_a, corrent.b), 
+		ft_stacksize(*corrent.stack_a));
+	b = ft_optimize(b, ft_stacksize(*corrent.stack_b));
+	total = corrent.a + b;
 	return (total);
 }
 
 int	ft_conditions(t_global p, int current_b)
 {
-	int	b;
 	int	a;
+	int	b;
 	int	total;
 
 	a = p.a;
@@ -187,19 +184,20 @@ int	ft_conditions(t_global p, int current_b)
 		else if (a != p.a)
 			ft_first(&total, current_b, p.a, *p.stack_b);
 		else
-			total = ft_second(p.a, current_b, *p.stack_a, *p.stack_b);
+			total = ft_second(p, current_b);
 	}
 	else
-		total = ft_theelse(p, current_b, *p.stack_a, *p.stack_b);
+		total = ft_theelse(p, current_b);
 	return (total);
 }
 
-int	ft_bestmovesindex(t_global push, int current_b)
+int	ft_getbestmoveindex(t_global push)
 {
 	t_stack	*a;
 	t_stack	*b;
 	int	perfect;
 	int index;
+	int current_b;
 
 	current_b = 0;
 	a = *push.stack_a;
@@ -210,7 +208,6 @@ int	ft_bestmovesindex(t_global push, int current_b)
 	{
 		push.a = ft_movementsfuture(a, b->index_sort);
 		push.b = b->index_sort;
-		printf("[a = %d] - [b = %d]\n",push.a,current_b);
 		if (perfect > ft_conditions(push, current_b))
 		{
 			index = b->index_sort;
