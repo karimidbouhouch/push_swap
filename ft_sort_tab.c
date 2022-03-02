@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 04:23:04 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/02/21 04:23:41 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/01 19:41:57 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	*ft_fill_tab(t_stack *stack)
 {
 	int	*numbers;
 	int	i;
-	int size;
+	int	size;
 
 	i = 0;
 	size = ft_stacksize(stack);
 	numbers = malloc(sizeof(int) * size);
-	if(!numbers)
+	if (!numbers)
 		return (NULL);
 	while (stack)
 	{
@@ -59,10 +59,10 @@ int	*ft_fill_tab(t_stack *stack)
 
 void	ft_fill_indexes(t_stack *stack)
 {
-	t_stack *tmp;
-	int *tab;
-	int	size;
-	int	i;
+	t_stack	*tmp;
+	int		*tab;
+	int		size;
+	int		i;
 
 	i = 0;
 	tmp = stack;
@@ -81,13 +81,14 @@ void	ft_fill_indexes(t_stack *stack)
 		tmp = stack;
 		i++;
 	}
+	free(tab);
 }
 
 int	ft_is_sorted(t_stack *stack)
 {
-	t_stack *tmp;
-	int	number;
-	
+	t_stack	*tmp;
+	int		number;
+
 	number = stack->value;
 	tmp = stack->next;
 	while (tmp)
