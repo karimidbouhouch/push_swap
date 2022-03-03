@@ -6,11 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 04:23:04 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/01 19:41:57 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/02 03:46:48 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../src/push_swap.h"
 
 int	*ft_sort_tab(int *tab, int size)
 {

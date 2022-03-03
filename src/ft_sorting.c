@@ -6,11 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 01:27:56 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/02 02:26:40 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/02 03:46:51 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../src/push_swap.h"
 
 void	ft_free(t_stack **lst)
 {

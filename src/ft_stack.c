@@ -6,11 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:11:52 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/02 02:24:13 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/02 22:58:16 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../src/push_swap.h"
 
 void	ft_stackadd_front(t_stack **lst, t_stack *new)
 {
@@ -57,6 +57,13 @@ t_stack	*ft_fill_stack(char **numbers)
 	while (numbers[++i])
 	{
 		s = ft_stacknew(ft_atoi(numbers[i]), 0);
+		if (!s || ft_atoi(numbers[i]) > 2147483647
+			|| ft_atoi(numbers[i]) < -2147483648)
+		{
+			ft_free(&s);
+			ft_putstr_fd("error", 1);
+			exit(1);
+		}
 		ft_stackadd_back(&head, s);
 	}
 	return (head);

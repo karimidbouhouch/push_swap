@@ -6,11 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:19:47 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/02 02:38:07 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/02 03:46:36 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../src/push_swap.h"
 
 int	get_longest_list(int *tab, int i, int count, int size)
 {

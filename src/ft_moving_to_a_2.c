@@ -6,11 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 02:21:18 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/02 02:23:50 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/02 03:46:44 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../src/push_swap.h"
 
 void	ft_rrr_rra_rrb(t_stack **a, t_stack **b, int amoves, int bmoves)
 {

@@ -6,29 +6,53 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 02:45:28 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/02 01:27:20 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:11:38 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../src/push_swap.h"
 
-void	ft_sort_3(t_stack **stack)
+void	ft_sort_3_2(int first, int second, int last, t_stack **a)
 {
-	if (!ft_is_sorted(*stack) && (*stack)->value > (*stack)->next->value)
+	if (first > second && second < last && last < first)
 	{
-		ft_swap(*stack);
-		ft_putstr_fd("sa\n", 1);
+		*a = ft_rotate(*a);
+		ft_putstr_fd("ra\n", 1);
 	}
-	if (!ft_is_sorted(*stack))
+	if (first < second && second > last && last > first)
 	{
-		*stack = ft_reverse_rotate(*stack);
+		ft_swap(*a);
+		*a = ft_rotate(*a);
+		ft_putstr_fd("sa\nra\n", 1);
+	}
+	if (first < second && second > last && last < first)
+	{
+		*a = ft_reverse_rotate(*a);
 		ft_putstr_fd("rra\n", 1);
 	}
-	if ((*stack)->value > (*stack)->next->value)
+}
+
+void	ft_sort_3(t_stack **a)
+{
+	int	first;
+	int	second;
+	int	last;
+
+	last = (*a)->next->next->value;
+	second = (*a)->next->value;
+	first = (*a)->value;
+	if (first > second && second < last && last > first)
 	{
-		ft_swap(*stack);
+		ft_swap(*a);
 		ft_putstr_fd("sa\n", 1);
 	}
+	if (first > second && second > last && last < second)
+	{
+		ft_swap(*a);
+		*a = ft_reverse_rotate(*a);
+		ft_putstr_fd("sa\nrra\n", 1);
+	}
+	ft_sort_3_2(first, second, last, a);
 }
 
 void	ft_sort_5(t_stack **stack_a)
@@ -49,7 +73,7 @@ void	ft_sort_5(t_stack **stack_a)
 		}
 	}
 	ft_sort_3(stack_a);
-	if (stack_b->value < stack_b->next->value)
+	if (stack_b->index_sort < stack_b->next->index_sort)
 	{
 		ft_swap(stack_b);
 		ft_putstr_fd("sb\n", 1);

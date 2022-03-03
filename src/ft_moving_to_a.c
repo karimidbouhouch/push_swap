@@ -6,11 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 07:55:02 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/02 02:21:37 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/02 03:46:46 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../src/push_swap.h"
 
 int	ft_getthecount(t_stack *b, int index)
 {

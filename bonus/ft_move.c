@@ -6,16 +6,32 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:12:49 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/01 20:17:02 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:31:56 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
+
+t_stack	*ft_stack_before_last(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+	{
+		tmp = stack;
+		stack = stack->next;
+	}
+	return (tmp);
+}
 
 void	ft_swap(t_stack *stack)
 {
 	int	tmp;
 
+	if (ft_stacksize(stack) <= 2)
+		return ;
 	tmp = stack->value;
 	stack->value = stack->next->value;
 	stack->next->value = tmp;

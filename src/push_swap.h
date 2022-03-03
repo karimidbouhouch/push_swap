@@ -6,14 +6,14 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 21:57:16 by kid-bouh          #+#    #+#             */
-/*   Updated: 2022/03/02 02:48:44 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2022/03/02 22:51:56 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <unistd.h>
 # include <stdio.h>
 
@@ -76,5 +76,5 @@ void	ft_rr_ra_rb(t_stack **a, t_stack **b, int amoves, int bmoves);
 void	ft_rrb_ra(t_stack **a, t_stack **b, int amoves, int bmoves);
 int		check_digit(char **av);
 void	check_same_number(t_stack *stack);
-
+void	ft_free(t_stack **lst);
 #endif
